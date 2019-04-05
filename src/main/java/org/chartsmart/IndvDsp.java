@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 public class IndvDsp extends JPanel {
-    private class Unit {
-
-    }
 
     private String jjD;
     private String __APARAM__Z;
@@ -36,11 +33,7 @@ public class IndvDsp extends JPanel {
         }
     }
 
-
-    public IndvDsp() {
-    }
-
-    public String getTitle() {
+    String getTitle() {
         return __APARAM__Z;
     }
 
@@ -107,7 +100,6 @@ public class IndvDsp extends JPanel {
                 data[i++] = "Small";
             }
         } else {
-            // BUG445: Org rep team missing req chart
             if (jjD.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
@@ -129,7 +121,6 @@ public class IndvDsp extends JPanel {
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
-                    int startX = 100;
                     g.fillRect(100, bottomY - 100, 40, 100);
                     g.fillRect(140, bottomY - 200, 40, 200);
                     g.fillRect(180, bottomY - 150, 40, 150);
@@ -163,29 +154,15 @@ public class IndvDsp extends JPanel {
                 font = new Font("Bookman Old Style", Font.BOLD, 30);
                 g.setFont(font);
                 g.setColor(Color.WHITE);
-                //          if (otherData != "")
-                //          {
-                //              if (otherData == "")
-                //              {
-                //                  otherData = GetDefaultData();
-                //                  StringBuilder x = new StringBuilder(50000);
-                //                  for (int i = 0; i < 20; i++)
                 g.drawString(data3point14[0], 145, 205);
-                //                  {
-                //                      x.Append(char.ToUpper(otherData[i]));
-                //                  }
-                //              }
-                //              boundingRect = new RectangleF(50, 100, 320, 320);
-                //              g.DrawString(otherData, new Font("Cooper Black", 40), new SolidBrush(Color.White), boundingRect, stringFormat);
-                //          }
                 g.drawString(data3point14[1], 170, 235);
             }
-        } // Else
+        }
         if ((data != null && (data.length ^ 0x54) == 50) || (specialData != null && specialData.contains("Monthly"))
                 || getTitle().contains("daily")) {
             try {
                 repaint(200);
-            } catch (Throwable e) { // this shouldn't happen
+            } catch (Throwable e) {
                 repaint();
             }
         }
