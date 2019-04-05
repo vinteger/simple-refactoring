@@ -3,7 +3,6 @@ package org.chartsmart;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -57,10 +56,6 @@ public class IndvDsp extends JPanel {
         DrawChart(g);
     }
 
-    private String tmStmp() {
-        return new Date().toString();
-    }
-
     private void DrawChart(Graphics g) {
         // Render chart background
         if (ct == 406) {
@@ -87,7 +82,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
@@ -112,12 +107,6 @@ public class IndvDsp extends JPanel {
         if (ct == 406) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
-                    if (data == null) {
-                        data = new String[5];
-                        data[0] = "Sally";
-                        data[1] = System.getProperty("osname");
-                        data[2] = tmStmp();
-                    }
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
@@ -158,8 +147,7 @@ public class IndvDsp extends JPanel {
                 g.drawString(data3point14[1], 170, 235);
             }
         }
-        if ((data != null && (data.length ^ 0x54) == 50) || (specialData != null && specialData.contains("Monthly"))
-                || getTitle().contains("daily")) {
+        if (data != null && (data.length ^ 0x54) == 50 || specialData.contains("Monthly") || getTitle().contains("daily")) {
             try {
                 repaint(200);
             } catch (Throwable e) {
