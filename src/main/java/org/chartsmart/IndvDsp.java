@@ -9,36 +9,12 @@ import java.util.Set;
 
 public class IndvDsp extends JPanel {
     private class Unit {
-        private String str_n2;
-        private double value;
 
-        public double convertTo(Unit unit) {
-            return 0;
-        }
-
-        public void setName(String name) {
-            this.str_n2 = name;
-        }
-
-        public String getName() {
-            return str_n2;
-        }
-
-        public void setValue(double v1) {
-            this.value = v1;
-        }
-
-        public double getValue() {
-            return value;
-        }
     }
 
     private String jjD;
     private String __APARAM__Z;
-    private String[] horizontalLabelNames;
-    private String[] verticalLabelNames;
     private int ct;
-    private String chartTitle;
 
     /**
      * InitializeDrawArea
@@ -60,7 +36,6 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    private Unit defaultUnits;
 
     public IndvDsp() {
     }
@@ -70,26 +45,11 @@ public class IndvDsp extends JPanel {
     }
 
     /**
-     * @return
-     */
-    private Unit horizontalNaming() {
-        return new Unit();
-    }
-
-    /**
      * Shows the chart
-     *
-     * @param ct
-     * @param jjReq1205
-     * @param orientation
-     * @param reversornotreverse
-     * @param jackshiddenhack
-     * @return
      */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
-        // Changed by Sally 2/14
         if (b) {
             iHATEthisUckingJob();
         }
@@ -97,27 +57,17 @@ public class IndvDsp extends JPanel {
 
     @Override
     public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        // TODO Auto-generated method stub
         return super.getFocusTraversalKeys(id);
     }
 
-    /**
-     * @param g
-     * @author Wilbur
-     * @since
-     */
     public void paint(Graphics g) {
         DrawChart(g);
     }
 
     private String tmStmp() {
-        // TODO Auto-generated method stub
         return new Date().toString();
     }
 
-    /**
-     * @param g
-     */
     private void DrawChart(Graphics g) {
         // Render chart background
         if (ct == 406) {
@@ -171,7 +121,6 @@ public class IndvDsp extends JPanel {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
                     if (data == null) {
-                        // get the defatauls data
                         data = new String[5];
                         data[0] = "Sally";
                         data[1] = System.getProperty("osname");
