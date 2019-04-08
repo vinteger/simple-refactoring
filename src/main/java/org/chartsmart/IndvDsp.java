@@ -3,9 +3,7 @@ package org.chartsmart;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class IndvDsp extends JPanel {
 
@@ -33,9 +31,6 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    public IndvDsp() {
-    }
-
     String getTitle() {
         return __APARAM__Z;
     }
@@ -49,17 +44,8 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    @Override
-    public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        return super.getFocusTraversalKeys(id);
-    }
-
     public void paint(Graphics g) {
         DrawChart(g);
-    }
-
-    private String tmStmp() {
-        return new Date().toString();
     }
 
     private void DrawChart(Graphics g) {
