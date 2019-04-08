@@ -112,12 +112,6 @@ public class IndvDsp extends JPanel {
         if (ct == 406) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
-
-                    data = new String[5];
-                    data[0] = "Sally";
-                    data[1] = System.getProperty("osname");
-                    data[2] = tmStmp();
-
                     font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
