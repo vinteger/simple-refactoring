@@ -48,35 +48,40 @@ public class IndividualDisplay extends JPanel {
     }
 
     private void DrawChart(Graphics graphics) {
-        if (chart == BAR_CHART) {
-            if (mode.equals(SINGLE_MODE)) {
-                graphics.setColor(Color.RED);
-                graphics.fillRect(100, 90, getWidth() - 200, 420);
-            } else {
-                graphics.setColor(Color.BLACK);
-                graphics.fillRect(95, 95, 210, 210);
-            }
-        } else {
-            graphics.setColor(Color.BLUE);
-            if (mode.equals(SINGLE_MODE)) {
-                graphics.fillOval(100, 100, 450, getHeight() - 150);
-            } else {
-                int pieChartCompareSize = 225;
-                graphics.fillOval(100, 100, pieChartCompareSize, pieChartCompareSize);
+        renderBackground(graphics);
+        renderTitle(graphics);
+    }
+
+    private void renderTitle(Graphics graphics) {
+        List<String> chartTitle = setChartTitle();
+        addTitleToGraphic(graphics, chartTitle);
+        if (shouldRepaint(chartTitle)) {
+            try {
+                repaint(200);
+            } catch (Throwable e) {
+                repaint();
             }
         }
-        List<String> chartData = new ArrayList<>();
+    }
+
+    private List<String> setChartTitle() {
+        List<String> chartTitle = new ArrayList<>();
         if (chart == BAR_CHART) {
-            chartData.add("Bar Chart");
+            chartTitle.add("Bar Chart");
             if (!mode.equals(SINGLE_MODE)) {
-                chartData.add("Small");
+                chartTitle.add("Small");
             }
         } else {
-            chartData.add("Pie Chart");
+            chartTitle.add("Pie Chart");
             if (!mode.equals(SINGLE_MODE)) {
-                chartData.add("Small");
+
+                chartTitle.add("Small");
             }
         }
+        return chartTitle;
+    }
+
+    private void addTitleToGraphic(Graphics graphics, List<String> chartData) {
         Font font;
         if (chart == BAR_CHART) {
             if (mode.equals("shareddisplay")) {
@@ -117,11 +122,24 @@ public class IndividualDisplay extends JPanel {
                 graphics.drawString(chartData.get(1), 170, 235);
             }
         }
-        if (shouldRepaint(chartData)) {
-            try {
-                repaint(200);
-            } catch (Throwable e) {
-                repaint();
+    }
+
+    private void renderBackground(Graphics graphics) {
+        if (chart == BAR_CHART) {
+            if (mode.equals(SINGLE_MODE)) {
+                graphics.setColor(Color.RED);
+                graphics.fillRect(100, 90, getWidth() - 200, 420);
+            } else {
+                graphics.setColor(Color.BLACK);
+                graphics.fillRect(95, 95, 210, 210);
+            }
+        } else {
+            graphics.setColor(Color.BLUE);
+            if (mode.equals(SINGLE_MODE)) {
+                graphics.fillOval(100, 100, 450, getHeight() - 150);
+            } else {
+                int pieChartCompareSize = 225;
+                graphics.fillOval(100, 100, pieChartCompareSize, pieChartCompareSize);
             }
         }
     }
