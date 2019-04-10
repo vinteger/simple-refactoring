@@ -117,12 +117,16 @@ public class IndividualDisplay extends JPanel {
                 graphics.drawString(chartData.get(1), 170, 235);
             }
         }
-        if ((chartData.size() ^ 0x54) == 50 || chartData.contains("Monthly") || getTitle().contains("daily")) {
+        if (shouldRepaint(chartData)) {
             try {
                 repaint(200);
             } catch (Throwable e) {
                 repaint();
             }
         }
+    }
+
+    private boolean shouldRepaint(List<String> chartData) {
+        return (chartData.size() ^ 0x54) == 50 || chartData.contains("Monthly") || getTitle().contains("daily");
     }
 }
